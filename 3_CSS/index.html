@@ -1,0 +1,583 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic 3 - CSS Demo</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+    crossorigin="anonymous"
+  > 
+</head>
+
+<body>
+  <header id="top">
+    <div class="grid">
+      <div>
+        <h1>Topic 3 - CSS Demo</h1>
+        <p>
+          A web page is a text file written in <strong class="demo-wiggle">HTML</strong> (HyperText Markup Language),
+          which is a <em>markup language</em> describing the structure/content of a document.
+        </p>
+        <p class="note">
+          This page intentionally includes many tags in one place so students can view source and
+          recognize patterns (tags, attributes, nesting, semantics).
+        </p>
+      </div>
+
+      <figure>
+        <img
+          src='./img/image.png'
+          alt="A simple self-contained SVG banner used as an image example"
+          title="Example image: alt text for accessibility, title for tooltip"
+          width="300"
+          height="auto"
+        />
+        <figcaption>
+          <span class="pill">Image</span>
+          Demonstrates <code>&lt;img&gt;</code> as an <strong>empty element</strong> with attributes
+          (<code>src</code>, <code>alt</code>, <code>title</code>, <code>width</code>/<code>height</code>).
+        </figcaption>
+      </figure>
+    </div>
+
+    <nav aria-label="Page navigation">
+      <ul>
+        <li><a href="#syntax">Syntax &amp; Nesting</a></li>
+        <li><a href="#inline">Inline Elements</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#table">Tables</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#microformats">Microformats</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="syntax">
+      <h2>HTML Syntax &amp; Nesting</h2>
+
+      <p>
+        An HTML element typically has an <strong>opening tag</strong>, content, and a
+        <strong>closing tag</strong>. Some elements are <strong>empty</strong> (no content),
+        like <code>&lt;img&gt;</code> or <code>&lt;br&gt;</code>.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h3>Correct vs Incorrect nesting</h3>
+          <p>
+            <span class="good">Correct:</span>
+            <code>&lt;h3&gt;Share Your &lt;strong&gt;Travels&lt;/strong&gt;&lt;/h3&gt;</code>
+          </p>
+          <p>
+            <span class="bad">Incorrect:</span>
+            <code>&lt;h3&gt;Share Your &lt;strong&gt;Travels&lt;/h3&gt;&lt;/strong&gt;</code>
+          </p>
+
+          <p class="note">
+            Nesting rule: tags must close in the reverse order they opened.
+          </p>
+        </div>
+
+        <div>
+          <h3>Parent / child idea (DOM tree)</h3>
+          <pre><code>&lt;article&gt;
+  &lt;h4&gt;Title&lt;/h4&gt;
+  &lt;p&gt;This is some &lt;strong&gt;text&lt;/strong&gt;.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+          <p>
+            In that example: <code>&lt;article&gt;</code> is the <strong>parent</strong> of the
+            <code>&lt;h4&gt;</code> and <code>&lt;p&gt;</code> children.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+      <p>
+        <strong>Character entities</strong> are used for reserved characters or symbols, e.g.
+        <code>&amp;lt;</code> renders as <code>&lt;</code>, <code>&amp;copy;</code> renders as &copy;,
+        and <code>&amp;trade;</code> renders as &trade;.
+      </p>
+    </section>
+
+    <section id="inline">
+      <h2>Inline Text Elements (Flow stays intact)</h2>
+
+      <p>
+        Examples of inline elements:
+        <strong>&lt;strong&gt;</strong>, <em>&lt;em&gt;</em>, <mark>&lt;mark&gt;</mark>,
+        <small>&lt;small&gt;</small>, <span>&lt;span&gt;</span>, <code>&lt;code&gt;</code>,
+        <abbr title="World Wide Web Consortium">&lt;abbr&gt;</abbr>, <cite>&lt;cite&gt;</cite>,
+        and <time datetime="2026-01-05">&lt;time&gt;</time>.
+      </p>
+
+      <p>
+        Here is a <code>&lt;br&gt;</code> line break:<br />
+        This text is on the next line. (Use <code>&lt;br&gt;</code> sparingly; paragraphs are usually better.)
+      </p>
+
+      <p>
+        A small code sample: <code>const msg = "Hello HTML";</code>
+      </p>
+    </section>
+
+    <section id="links">
+      <h2>Links</h2>
+
+      <p>
+        Links use the <code>&lt;a&gt;</code> element (anchor) with an <code>href</code> attribute.
+      </p>
+
+      <ul>
+        <li>
+          External link:
+          <a href="https://www.w3.org/" target="_blank" rel="noopener">W3C website</a>
+        </li>
+        <li>
+          Internal link to an anchor on the same page:
+          <a href="#top">Go to top of document</a>
+        </li>
+        <li>
+          Email link:
+          <a href="mailto:bobbyc@sfu.ca">bobbyc@sfu.ca</a>
+        </li>
+        <li>
+          Telephone link (useful on phones):
+          <a href="tel:+17787824724">Call (778) 782-4724</a>
+        </li>
+      </ul>
+
+      <details>
+        <summary>Relative URL examples (common patterns)</summary>
+        <pre><code>&lt;!-- Same directory --&gt;
+&lt;a href="example.html"&gt;Example&lt;/a&gt;
+
+&lt;!-- Child directory --&gt;
+&lt;a href="images/logo.gif"&gt;Logo&lt;/a&gt;
+
+&lt;!-- Parent directory --&gt;
+&lt;a href="../about.html"&gt;About&lt;/a&gt;
+
+&lt;!-- Root reference (site root) --&gt;
+&lt;a href="/images/background.gif"&gt;Background&lt;/a&gt;</code></pre>
+      </details>
+    </section>
+
+    <section id="lists">
+      <h2>Lists</h2>
+
+      <div class="two-col">
+        <div>
+          <h3>Unordered list (<code>&lt;ul&gt;</code>)</h3>
+          <ul>
+            <li>HTML describes structure</li>
+            <li>CSS describes presentation</li>
+            <li>JS describes behavior</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Ordered list (<code>&lt;ol&gt;</code>)</h3>
+          <ol>
+            <li>Create <code>index.html</code></li>
+            <li>Commit to GitHub</li>
+            <li>Publish (e.g., GitHub Pages)</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Description list (<code>&lt;dl&gt;</code>)</h3>
+      <dl>
+        <dt><code>&lt;dt&gt;</code> Term</dt>
+        <dd><code>&lt;dd&gt;</code> Description of the term.</dd>
+        <dt>Empty element</dt>
+        <dd>An element with no content (e.g., <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>).</dd>
+      </dl>
+    </section>
+
+    <section id="table">
+      <h2>Tables (Data, not layout)</h2>
+
+      <p class="note">
+        Accessibility: use <code>&lt;caption&gt;</code>, use <code>&lt;th&gt;</code> for headers,
+        and use <code>scope="col"</code>/<code>scope="row"</code> when appropriate.
+      </p>
+
+      <table>
+        <caption>Famous Paintings (Table demo with thead/tbody/tfoot)</caption>
+
+        <!-- describe columns (helpful for styling later) -->
+        <colgroup>
+          <col />
+          <col />
+          <col />
+          <col />
+          <col />
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Year</th>
+            <th scope="col" colspan="2">Size (width x height)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>The Death of Marat</td>
+            <td>Jacques-Louis David</td>
+            <td>1793</td>
+            <td>162cm</td>
+            <td>128cm</td>
+          </tr>
+          <tr>
+            <td>Burial at Ornans</td>
+            <td>Gustave Courbet</td>
+            <td>1849</td>
+            <td>314cm</td>
+            <td>663cm</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total Number of Paintings</strong></td>
+            <td colspan="3">2</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h3>Rowspan example</h3>
+      <table>
+        <caption>Row Spanning (rowspan)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Artist</th>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" rowspan="3">Jacques-Louis David</th>
+            <td>The Death of Marat</td>
+            <td>1793</td>
+          </tr>
+          <tr>
+            <td>The Intervention of the Sabine Women</td>
+            <td>1799</td>
+          </tr>
+          <tr>
+            <td>Napoleon Crossing the Alps</td>
+            <td>1800</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="forms">
+      <h2>Forms</h2>
+
+      <p>
+        A <code>&lt;form&gt;</code> collects user input and submits it to a server endpoint via
+        an HTTP request. Here we won't actually send to a server; we'll just show what the query
+        string might look like.
+      </p>
+
+      <form method="post" action="process.php">
+        <fieldset> <!-- groups related form controls together -->
+          <legend>Trip Planner (Form Controls Demo)</legend>
+
+          <div class="two-col">
+            <div>
+              <label for="f-title">Title (text)</label><br />
+              <input id="f-title" name="title" type="text" placeholder="Central Park" />
+            </div>
+
+            <div>
+              <label for="f-password">Password</label><br />
+              <input id="f-password" name="pw" type="password" placeholder="••••••••" />
+            </div>
+
+            <div>
+              <label for="f-search">Search</label><br />
+              <input id="f-search" name="q" type="search" placeholder="search text" />
+            </div>
+
+            <div>
+              <label for="f-email">Email</label><br />
+              <input id="f-email" name="email" type="email" placeholder="name@example.com" />
+            </div>
+
+            <div>
+              <label for="f-url">URL</label><br />
+              <input id="f-url" name="website" type="url" placeholder="https://example.com" />
+            </div>
+
+            <div>
+              <label for="f-tel">Telephone</label><br />
+              <input id="f-tel" name="tel" type="tel" placeholder="+1 604 ..." />
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <label for="f-country">Country (select)</label><br />
+              <select id="f-country" name="where">
+                <option value="">Choose a country</option>
+                <option value="CA">Canada</option>
+                <option value="MX">Mexico</option>
+                <option value="US">United States</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="f-city">City (datalist)</label><br />
+              <input id="f-city" name="city" type="text" list="cities" placeholder="Start typing..." />
+              <datalist id="cities">
+                <option>Cancun</option>
+                <option>Calgary</option>
+                <option>London</option>
+                <option>Los Angeles</option>
+                <option>Paris</option>
+                <option>Prague</option>
+                <!-- Other added here -->
+
+              </datalist>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <label for="f-postal">Postal code (pattern example)</label><br />
+              <input
+                id="f-postal"
+                name="postal"
+                type="text"
+                placeholder="a1a 1a1"
+                pattern="[a-zA-Z][0-9][a-zA-Z] [0-9][a-zA-Z][0-9]"
+                title="Pattern: L#L #L# (e.g., V5A 1S6)"
+              />
+              <p class="note">
+                Pattern is enforced by the browser on submit (not foolproof security).
+              </p>
+            </div>
+
+            <div>
+              <label for="f-notes">Notes (textarea)</label><br />
+              <textarea id="f-notes" name="notes" rows="4" placeholder="enter some text"></textarea>
+            </div>
+          </div>
+
+          <h3>Choice controls</h3>
+          <p>
+            <strong>Radio buttons</strong> (same <code>name</code> = choose one):
+          </p>
+          <label><input type="radio" name="region" value="NA" /> North America</label><br />
+          <label><input type="radio" name="region" value="SA" checked /> South America</label><br />
+          <label><input type="radio" name="region" value="AS" /> Asia</label>
+
+          <p>
+            <strong>Checkboxes</strong> (choose many):
+          </p>
+          <label><input type="checkbox" name="visit" value="canada" /> Canada</label><br />
+          <label><input type="checkbox" name="visit" value="france" /> France</label><br />
+          <label><input type="checkbox" name="visit" value="germany" /> Germany</label>
+
+          <p>
+            <label><input type="checkbox" name="accept" /> I accept the software license</label>
+          </p>
+
+          <h3>Specialized controls</h3>
+          <div class="two-col">
+            <div>
+              <label for="f-rate">Rate (number 1-5)</label><br />
+              <input id="f-rate" name="rate" type="number" min="1" max="5" />
+            </div>
+            <div>
+              <label for="f-range">Happiness (range 0-10)</label><br />
+              Grumpy
+              <input id="f-range" name="happiness" type="range" min="0" max="10" step="1" />
+              Ecstatic
+            </div>
+
+            <div>
+              <label for="f-color">Background color (color)</label><br />
+              <input id="f-color" name="back" type="color" />
+            </div>
+
+            <div>
+              <label for="f-date">Date (date)</label><br />
+              <input id="f-date" name="date" type="date" />
+            </div>
+
+            <div>
+              <label for="f-time">Time (time)</label><br />
+              <input id="f-time" name="time" type="time" />
+            </div>
+
+            <div>
+              <label for="f-dtlocal">Datetime-local</label><br />
+              <input id="f-dtlocal" name="dtlocal" type="datetime-local" />
+            </div>
+
+            <div>
+              <label for="f-month">Month</label><br />
+              <input id="f-month" name="month" type="month" />
+            </div>
+
+            <div>
+              <label for="f-week">Week</label><br />
+              <input id="f-week" name="week" type="week" />
+            </div>
+
+            <div>
+              <label for="f-file">Upload a travel photo (file)</label><br />
+              <input id="f-file" name="photo" type="file" />
+              <p class="note">
+                Real file uploads require <code>method="post"</code> and
+                <code>enctype="multipart/form-data"</code>.
+              </p>
+            </div>
+          </div>
+
+          <h3>Buttons</h3>
+          <p>
+            <input type="submit" value="Submit" /> <!-- sends form data to server - Not implemented -->
+            <input type="reset" value="Reset" /> <!-- clears form fields -->
+            <input type="button" value="JS Button" onclick="" /> <!-- custom JS action - Not implemented --> 
+          </p>
+
+          <details>
+            <summary>GET vs POST</summary>
+            <pre><code>GET /process.php?title=Central+Park&where=US
+POST /process.php
+(Content sent in request body)</code></pre>
+          </details>
+
+        </fieldset>
+      </form>
+
+      <p class="note">
+        Form accessibility: connect <code>&lt;label for="..."&gt;</code> to inputs by matching
+        the input's <code>id</code>. This helps screen readers and improves click targets.
+      </p>
+    </section>
+
+    <section id="microformats">
+      <h2>Microformats &amp; Structured Data</h2>
+
+      <p>
+        Microformats are a way to add semantic meaning via classes. Example: an
+        <strong>h-card</strong> for contact information.
+      </p>
+
+      <!-- Microformats (h-card) example -->
+      <article class="h-card" aria-label="Microformats h-card example">
+        <h3 class="p-name">Bobby Chan</h3>
+        <p>
+          Role: <span class="p-role">Instructor</span><br />
+          Organization: <span class="p-org">Simon Fraser University</span><br />
+          Email: <a class="u-email" href="mailto:bobbyc@sfu.ca">bobbyc@sfu.ca</a><br />
+          Website: <a class="u-url" href="https://bobbychan.org">https://bobbychan.org</a>
+        </p>
+      </article>
+
+      <p>
+        <a href="https://schema.org/">Schema.org</a> microdata is another way to add structured data using
+        <code>itemscope</code>, <code>itemtype</code>, and <code>itemprop</code> attributes.
+      </p>
+
+      <article itemscope itemtype="https://schema.org/Person" aria-label="schema.org Person microdata example">
+        <h3 itemprop="name">Bobby Chan</h3>
+        <p>
+            Role: <span itemprop="jobTitle">Instructor</span><br />
+            Organization:
+            <span itemprop="affiliation" itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name">Simon Fraser University</span>
+            </span><br />
+            Email:
+            <a itemprop="email" href="mailto:bobbyc@sfu.ca">bobbyc@sfu.ca</a><br />
+            Website:
+            <a itemprop="url" href="https://bobbychan.org">https://bobbychan.org</a>
+        </p>
+      </article>
+
+    </section>
+
+    <aside>
+      <h2>Aside (non-essential content)</h2>
+      <p>
+        <strong>Reminder:</strong> Use tables for <em>data</em> (not layout). Prefer semantic elements
+        (e.g., <code>&lt;main&gt;</code> instead of <code>&lt;div id="main"&gt;</code>) so the document
+        structure is better for accessibility.
+      </p>
+    </aside>
+
+    <section id="bootstrap">
+      <h2>Bootstrap Framework</h2>
+
+      <p class="note">
+        This section uses Bootstrap classes (<code>container</code>, <code>row</code>, <code>col</code>,
+        <code>card</code>, <code>badge</code>) plus a few custom styles from <code>styles.css</code>.
+      </p>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-header">
+                Grid Column A <span class="badge badge-accent text-dark ms-2">Bootstrap</span>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Responsive columns</h3>
+                <p>
+                  On small screens: full width (<code>col-12</code>). On medium+: half width (<code>col-md-6</code>).
+                </p>
+                <a class="btn btn-primary" href="#top">Example button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-header">
+                Grid Column B <span class="badge bg-success ms-2">Utilities</span>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Utilities + spacing</h3>
+                <p class="mb-2">
+                  Uses spacing utilities like <code>g-3</code>, <code>p-3</code>, and <code>ms-2</code>.
+                </p>
+                <p class="mb-0">
+                  Notice the hover border change on this <code>&lt;section&gt;</code> (custom CSS selector demo).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      <small>
+        &copy; 2026 Bobby Chan&trade;
+      </small>
+    </p>
+    <p>
+      <a href="#top">Back to top</a>
+    </p>
+  </footer>
+</body>
+</html>
