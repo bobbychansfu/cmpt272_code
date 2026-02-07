@@ -282,3 +282,41 @@ citySelect.addEventListener('change', async () => {
         timeFeedback.className = 'alert alert-danger mt-3';
     }
 });
+
+//-- file handling
+
+const fileInput = document.getElementById("fileupload");
+const fileInfo = document.getElementById("fileInfo");
+
+if (fileInput) {
+    fileInput.addEventListener("change", function (event) {
+        console.log("File input changed.");
+    const file = event.target.files[0];
+    if (file) {
+        if (!file.type.includes('text') && !file.name.endsWith('.csv')) {
+            fileInfo.innerHTML = "Please upload a valid text or CSV file.";
+            fileInfo.className = "alert alert-danger mt-3";
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            try {
+                const fileContent = e.target.result.split('\n').map(line => line.split(','));
+               
+                fileInfo.innerHTML = fileContent.map(row => row.join(', ')).join('<br>');
+                fileInfo.className = "alert alert-light border mb-0";
+            } catch (error) {
+                console.error("Error parsing file:", error);
+                fileInfo.innerHTML = "Error parsing file. Please ensure it's a valid CSV.";
+                fileInfo.className = "alert alert-danger mt-3";
+            }
+        };
+        reader.readAsText(file);
+    } else {
+        console.log("No file selected.");
+        fileInfo.innerHTML = "";
+    }
+    });
+} else {
+    console.error("fileInput element not found!");
+}

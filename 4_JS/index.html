@@ -499,6 +499,26 @@ xhr.send();</code></pre>
             </div>
         </section>
 
+        <!-- FILES -->
+        <section id="files" class="mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span class="fw-semibold">File Uploads: FileReader + input type="file"</span>
+                    <span class="badge text-bg-success">client-side file reading</span>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">
+                        Read a local file using an <code>&lt;input type="file"&gt;</code> and <code>FileReader</code>.
+                    </p>
+                    <form action="#" class="mb-3">
+                        <label for="fileupload" class="form-label">Upload a CSV file:</label>
+                        <input type="file" id="fileupload" name="fileupload" class="form-control" accept=".csv">
+                    </form>
+                    <div id="fileInfo" class="alert alert-light border mb-0" style="white-space: pre-wrap;"></div>
+                </div>
+            </div>
+        </section>
+
         <div class="text-center">
             <a class="btn btn-link" href="#top">Back to top</a>
         </div>
