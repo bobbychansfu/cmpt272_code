@@ -182,3 +182,11 @@
     border-right-color: var(--border);
   }
 }
+
+.leaflet-container {
+  
+  height: "500px"; 
+  width: "800px"; 
+  cursor: "default"
+}
+

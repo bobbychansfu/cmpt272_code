@@ -151,7 +151,7 @@ export default App;
 */
 
 
-/* Ex4: useState() and useEffect() to fetch data */
+/* Ex4: useState() and useEffect() to fetch data 
 // ---------------------------------------- //
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -198,6 +198,24 @@ function App() {
       </button>
     </div>
   );
+}
+
+*/
+
+/* Routing
+*/
+
+import { Routes, Route } from "react-router-dom";
+import MapDemo from "./LeafletDemo";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<h1>Home Page</h1>} />
+      <Route path="/about" element={<h1>About Page</h1>} />
+      <Route path="/leaflet" element={<MapDemo />} />
+    </Routes>
+  )
 }
 
 export default App
