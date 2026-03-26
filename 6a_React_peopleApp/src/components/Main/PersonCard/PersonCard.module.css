@@ -1,0 +1,29 @@
+.loadingContainer {
+  padding-top: 3rem;
+}
+
+.deleteIcon {
+  font-size: 1.5rem;
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  cursor: pointer;
+  color: red;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.deleteIcon:hover {
+  font-size: 1.6rem;
+  background-color: #ffe6e6;
+}
+
+.deleteIcon:active {
+  font-size: 1.4rem;
+  background-color: #ffcccc;
+}

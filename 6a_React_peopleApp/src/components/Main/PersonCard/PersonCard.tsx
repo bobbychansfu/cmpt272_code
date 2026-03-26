@@ -1,29 +1,42 @@
+import { Col, Card, Spinner } from "react-bootstrap";
+import styles from "./PersonCard.module.css";
+import type { Person } from "../../../types/PersonType";
+
 function PersonCard({
-    name,
-    age,
-    profilePic,
-    fav,
+    
+    person,
     onToggleFav,
-    id
-
+    onDelete,
 }: {
-    name: string;
-    age: number;
-    profilePic?: string;
-    fav: boolean;
-    id: number;
-    onToggleFav: (id: number) => void;
 
+    person: Person;
+    onToggleFav: (id: number) => void;
+    onDelete: (person: Person) => void;
 }) {
     return (
         <>
-            Name: {name} <br />
-            Age: {age} <br />
-            <img src={profilePic} alt={`${name}'s profile`} /> <br />
-            <span className="heart" onClick={() => onToggleFav(id)}>
-                {fav ? "❤️" : "🤍"}
-            </span>
-            <hr />
+            <Col sm={12} md={4} lg={3} className="mb-4">
+                {person.id === -1 ? (
+                    <div className={styles.loadingContainer}>
+                        <Spinner animation="border" variant="primary" />
+                    </div>
+                ) : (
+                    <Card>
+                        <Card.Img variant="top" src={person.profilePic} />
+                        <Card.Body>
+                            <Card.Title>{person.name}</Card.Title> <br />
+                            <span className="heart" onClick={() => onToggleFav(person.id)}>
+                                {person.fav ? "❤️" : "🤍"}
+                            </span>
+                        </Card.Body>
+
+                        <i
+                            className={`bi bi-x-circle-fill ${styles.deleteIcon}`}
+                            onClick={() => onDelete(person)}
+                        />
+                    </Card>
+                )}
+            </Col>
         </>
     );
 }
