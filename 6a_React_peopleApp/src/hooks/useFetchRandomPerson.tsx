@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import type { Person } from "../types/PersonType";
+import type { Person } from "../models/PersonType";
 
 function useFetchRandomPerson(trigger: number) {
     const [peopleList, setPeople] = useState<Person[]>([]);
@@ -16,7 +16,7 @@ function useFetchRandomPerson(trigger: number) {
                 const name = data.results[0].name.first;
                 const age = data.results[0].dob.age;
                 const profilePic = data.results[0].picture.large;
-                const seed = data.results[0].login.seed;
+                const seed = data.info.seed;
                 setPeople(prev => [...prev, { id: nextIdRef.current++, name, age, profilePic, seed, fav: false }]);
             } catch (error) {
                 console.error("Error fetching person:", error);

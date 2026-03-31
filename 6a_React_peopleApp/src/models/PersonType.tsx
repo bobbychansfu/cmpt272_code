@@ -4,4 +4,5 @@ export type Person = {
     age: number;
     profilePic?: string;
     fav: boolean;
+    seed: string;
 };

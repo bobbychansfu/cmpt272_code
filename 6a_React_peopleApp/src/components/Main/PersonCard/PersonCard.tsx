@@ -1,9 +1,10 @@
 import { Col, Card, Spinner } from "react-bootstrap";
 import styles from "./PersonCard.module.css";
-import type { Person } from "../../../types/PersonType";
+import type { Person } from "@models/PersonType";
+import { Link } from "react-router-dom";
 
 function PersonCard({
-    
+
     person,
     onToggleFav,
     onDelete,
@@ -22,7 +23,9 @@ function PersonCard({
                     </div>
                 ) : (
                     <Card>
-                        <Card.Img variant="top" src={person.profilePic} />
+                        <Link to={`/people/${person.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                            <Card.Img variant="top" src={person.profilePic} />
+                        </Link>
                         <Card.Body>
                             <Card.Title>{person.name}</Card.Title> <br />
                             <span className="heart" onClick={() => onToggleFav(person.id)}>
